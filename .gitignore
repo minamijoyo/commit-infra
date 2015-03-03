@@ -6,3 +6,6 @@ vendor/
 
 # Ignore Chef tempfiles.
 cookbooks/
+
+# Ignore wercker CI temp file
+target.env
