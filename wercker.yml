@@ -1,0 +1,16 @@
+box: wercker/ruby
+build:
+  steps:
+    - bundle-install
+    - script:
+        name: Make $HOME/.ssh directory
+        code: mkdir -p $HOME/.ssh
+    - create-file:
+        name: Put SSH private key
+        filename: $HOME/.ssh/aws-login.pem
+        overwrite: true
+        hide-from-log: true
+        content: $AWS_SSH_KEY_PRIVATE
+    - script:
+        name: Run chmod 0400 $HOME/.ssh/aws-login.pem
+        code: chmod 0400 $HOME/.ssh/aws-login.pem

@@ -1,0 +1,8 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore bundle gem
+vendor/
+
+# Ignore Chef tempfiles.
+cookbooks/
