@@ -31,13 +31,13 @@ build:
         code: cat ec2.env
     - script:
         name: export environments
-        code: source ec2.env
+        code: source ec2.env;echo $TARGET_IP;echo $INSTANCE_ID;
     - script:
         name: berks vendor cookbooks
         code: bundle exec berks vendor cookbooks
     - script:
         name: knife solo bootstrap
-        code: env;bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $TARGET_SSH_KEYPATH -N commitm-ap
+        code: echo $TARGET_IP;echo $INSTANCE_ID;bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker -N commitm-ap
     - script:
         name: serverspec
         code: bundle exec rake serverspec:commitm-ap
