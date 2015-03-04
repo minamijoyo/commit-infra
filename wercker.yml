@@ -37,7 +37,7 @@ build:
         code: bundle exec berks vendor cookbooks
     - script:
         name: knife solo bootstrap
-        code: bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $TARGET_SSH_KEYPATH -N commitm-ap
+        code: env;bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $TARGET_SSH_KEYPATH -N commitm-ap
     - script:
         name: serverspec
         code: bundle exec rake serverspec:commitm-ap
