@@ -6,20 +6,14 @@ build:
         name: make ssh dir
         code: mkdir -m 700 -p $HOME/.ssh
     - create-file:
-        name: put ssh public key
-        filename: $HOME/.ssh/aws-wercker.pub
-        overwrite: true
-        hide-from-log: true
-        content: $AWS_SSH_KEY_PUBLIC
-    - create-file:
         name: put ssh private key
-        filename: $HOME/.ssh/aws-wercker
+        filename: $HOME/.ssh/aws-wercker.pem
         overwrite: true
         hide-from-log: true
         content: $AWS_SSH_KEY_PRIVATE
     - script:
         name: chmod ssh private key
-        code: chmod 400 $HOME/.ssh/aws-wercker
+        code: chmod 400 $HOME/.ssh/aws-wercker.pem
     - script:
         name: delete ec2.env file if exists
         code: rm -f ec2.env
@@ -37,10 +31,10 @@ build:
         code: bundle exec berks vendor cookbooks
     - script:
         name: ssh connect test
-        code: ssh ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker hostname
+        code: ssh ec2-user@$TARGET_IP -i $TARGET_SSH_KEYPATH hostname
     - script:
         name: knife solo bootstrap
-        code: echo $TARGET_IP;echo $INSTANCE_ID;bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker -N commitm-ap
+        code: echo $TARGET_IP;echo $INSTANCE_ID;bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $TARGET_SSH_KEYPATH -N commitm-ap
     - script:
         name: serverspec
         code: bundle exec rake serverspec:commitm-ap
