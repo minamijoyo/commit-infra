@@ -3,14 +3,34 @@ build:
   steps:
     - bundle-install
     - script:
-        name: Make $HOME/.ssh directory
-        code: mkdir -p $HOME/.ssh
+        name: make ssh dir
+        code: mkdir -m 700 -p $HOME/.ssh
     - create-file:
-        name: Put SSH private key
+        name: put ssh private key
         filename: $HOME/.ssh/aws-login.pem
         overwrite: true
         hide-from-log: true
         content: $AWS_SSH_KEY_PRIVATE
     - script:
-        name: Run chmod 0400 $HOME/.ssh/aws-login.pem
-        code: chmod 0400 $HOME/.ssh/aws-login.pem
+        name: chmod ssh private key
+        code: chmod 400 $HOME/.ssh/aws-login.pem
+    - script:
+        name: delete ec2.env file if exists
+        code: rm -f ec2.env
+    - script:
+        name: aws ec2 run-instances
+        code: bundle exec ruby ec2-run-instances.rb > ec2.env
+    - script:
+        name: export environments
+        code: source ec2.env
+    - script:
+        name: knife solo bootstrap
+        code: bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i ~/.ssh/aws-login.pem -N commitm-ap
+    - script:
+        name: serverspec
+        code: bundle exec rake serverspec:commitm-ap
+
+  after-steps:
+    - script:
+        name: aws ec2 terminate-instances
+        code: bundle exec ruby ec2-terminate-instances.rb
