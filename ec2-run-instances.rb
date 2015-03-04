@@ -15,7 +15,7 @@ ec2_options = {
   image_id: "ami-18869819",
   min_count: 1,
   max_count: 1,
-  key_name: "aws-login",
+  key_name: "aws-wercker",
 #  security_group_ids: ["sg-48b7002d"],
   instance_type: "t2.micro",
   placement: {

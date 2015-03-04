@@ -20,7 +20,7 @@
     "host_name": "<%= ENV['TARGET_IP'] %>",
     "user": "ec2-user",
     "port": 22,
-    "keys":  "~/work/aws/aws-login.pem",
+    "keys":  "<%= ENV['TARGET_SSH_KEYPATH'] %>",
     "roles":["base", "ap"]
   }
 ]
