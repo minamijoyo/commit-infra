@@ -24,6 +24,9 @@ build:
         name: export environments
         code: source ec2.env
     - script:
+        name: berks vendor cookbooks
+        code: bundle exec berks vendor cookbooks
+    - script:
         name: knife solo bootstrap
         code: bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i ~/.ssh/aws-login.pem -N commitm-ap
     - script:
