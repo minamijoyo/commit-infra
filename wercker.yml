@@ -30,17 +30,11 @@ build:
         name: berks vendor cookbooks
         code: bundle exec berks vendor cookbooks
     - script:
-        name: print debug
-        code: ls -la ~/.ssh/aws-wercker.pem; md5sum ~/.ssh/aws-wercker.pem; cat ~/.ssh/aws-wercker.pem
-    - script:
-        name: sleep 60
-        code: date;sleep 60;date
-    - script:
         name: ssh connect test
         code: ssh ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null hostname
     - script:
         name: knife solo bootstrap
-        code: echo $TARGET_IP;echo $INSTANCE_ID;bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker.pem -N commitm-ap
+        code: bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker.pem -N commitm-ap
     - script:
         name: serverspec
         code: bundle exec rake serverspec:commitm-ap
