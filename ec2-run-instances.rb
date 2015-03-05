@@ -53,8 +53,10 @@ run_response = ec2.run_instances(ec2_options)
 # get instance_id from API response
 instance_id = run_response.data.instances[0].instance_id
 
-# wait until instance boot
-ec2.wait_until(:instance_running,  instance_ids:[instance_id])
+# wait until :instance_status_ok
+# :instance_running is insufficient state for ssh
+# :instance_status_ok ensures instance network reachability
+ec2.wait_until(:instance_status_ok,  instance_ids:[instance_id])
 
 # get public ip address
 describe_response = ec2.describe_instances(instance_ids: [instance_id])
