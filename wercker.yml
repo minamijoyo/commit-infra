@@ -31,7 +31,7 @@ build:
         code: bundle exec berks vendor cookbooks
     - script:
         name: ssh connect test
-        code: ssh ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker.pem hostname
+        code: ssh ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null hostname
     - script:
         name: knife solo bootstrap
         code: echo $TARGET_IP;echo $INSTANCE_ID;bundle exec knife solo bootstrap ec2-user@$TARGET_IP -i $HOME/.ssh/aws-wercker.pem -N commitm-ap

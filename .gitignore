@@ -8,4 +8,4 @@ vendor/
 cookbooks/
 
 # Ignore wercker CI temp file
-target.env
+ec2.env
