@@ -38,8 +38,6 @@ build:
     - script:
         name: serverspec
         code: bundle exec rake serverspec:commitm-ap
-
-  after-steps:
     - script:
         name: aws ec2 terminate-instances
         code: bundle exec ruby ec2-terminate-instances.rb
