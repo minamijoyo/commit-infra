@@ -1,6 +1,7 @@
 require 'aws-sdk'
 
 # set environments
+puts "initialize client"
 ec2 = Aws::EC2::Client.new(
   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
@@ -48,19 +49,30 @@ ec2_options = {
 }
 
 # run instance
+puts "run instance"
 run_response = ec2.run_instances(ec2_options)
+puts "#{run_response}"
 
 # get instance_id from API response
 instance_id = run_response.data.instances[0].instance_id
+puts "INSTANCE_ID=#{instance_id}"
 
 # wait until :instance_status_ok
 # :instance_running is insufficient state for ssh
 # :instance_status_ok ensures instance network reachability
-ec2.wait_until(:instance_status_ok,  instance_ids:[instance_id])
+puts "wait for instance_status_ok"
+ec2.wait_until(:instance_status_ok,  instance_ids:[instance_id]) do |w|
+  w.before_attempt do |n|
+    puts "attempt: #{n}"
+  end
+end
 
 # get public ip address
+puts "describe instance"
 describe_response = ec2.describe_instances(instance_ids: [instance_id])
+puts "#{describe_response}"
 target_ip = describe_response.data.reservations[0].instances[0].public_ip_address
+puts "TARGET_IP=#{target_ip}"
 
 # output result to file
 File.open('ec2.env', 'w') do |file|
