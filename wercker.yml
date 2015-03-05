@@ -19,7 +19,7 @@ build:
         code: rm -f ec2.env
     - script:
         name: aws ec2 run-instances
-        code: bundle exec ruby ec2-run-instances.rb > ec2.env
+        code: bundle exec ruby ec2-run-instances.rb
     - script:
         name: print ec2.env for debug
         code: cat ec2.env

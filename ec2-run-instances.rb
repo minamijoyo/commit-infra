@@ -62,6 +62,8 @@ ec2.wait_until(:instance_status_ok,  instance_ids:[instance_id])
 describe_response = ec2.describe_instances(instance_ids: [instance_id])
 target_ip = describe_response.data.reservations[0].instances[0].public_ip_address
 
-# output result to stdout
-puts "export TARGET_IP=#{target_ip}"
-puts "export INSTANCE_ID=#{instance_id}"
+# output result to file
+File.open('ec2.env', 'w') do |file|
+  file.puts "export TARGET_IP=#{target_ip}"
+  file.puts "export INSTANCE_ID=#{instance_id}"
+end
