@@ -5,7 +5,7 @@
     "user": "vagrant",
     "port": 2222,
     "keys":  "~/work/ruby/commit-m/.vagrant/machines/default/virtualbox/private_key",
-    "roles":["base", "ap", "db"]
+    "roles":["base", "ap", "db", "es"]
   },
   {
     "name": "commitm-ap01",
