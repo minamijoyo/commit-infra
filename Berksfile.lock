@@ -34,6 +34,7 @@ GRAPH
     windows (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
+  java (1.35.0)
   mysql (5.3.6)
     yum-mysql-community (>= 0.0.0)
   nodejs (2.2.0)

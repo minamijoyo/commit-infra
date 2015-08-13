@@ -1,0 +1,17 @@
+{
+  "name": "es",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "java": {
+      "install_flavor": "openjdk",
+      "jdk_version": "8"
+    }
+  },
+  "override_attributes": {},
+  "run_list": [
+    "recipe[java]",
+    "recipe[elasticsearch]",
+    "recipe[commitm-elasticsearch]"
+  ]
+}
