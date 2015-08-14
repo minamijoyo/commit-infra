@@ -13,7 +13,7 @@ ec2 = Aws::EC2::Client.new(
 #       So use network_interfaces:groups
 ec2_options = {
   dry_run: false,
-  image_id: "ami-18869819",
+  image_id: "ami-ebbfc2ea",
   min_count: 1,
   max_count: 1,
   key_name: "aws-wercker",
