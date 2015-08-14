@@ -5,7 +5,6 @@
   "default_attributes": {
     "mysql": {
       "service_name": "default",
-      "version": "5.6",
       "remove_anonymous_users": true,
       "remove_test_database": true
     }

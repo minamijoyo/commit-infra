@@ -7,11 +7,6 @@ describe "mysql spec" do
     its(:exit_status) { should eq 0 }
   end
 
-  # package
-  describe package('mysql-community-server') do
-    it { should be_installed.with_version("5.6") }
-  end
-
   # service
   describe service('mysqld') do
     it { should be_enabled }
