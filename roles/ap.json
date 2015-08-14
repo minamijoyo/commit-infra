@@ -15,6 +15,6 @@
     "recipe[rvm::system]",
     "recipe[sqlite]",
     "recipe[nodejs]",
-    "recipe[mysql::client]"
+    "recipe[commitm-mysql::client]"
   ]
 }

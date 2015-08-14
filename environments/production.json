@@ -4,10 +4,6 @@
   "chef_type": "environment",
   "json_class": "Chef::Environment",
   "default_attributes": {
-    "mysql": {
-      "port": "3306",
-      "server_root_password": "change_after_install"
-    }
   },
   "override_attributes": {}
 }

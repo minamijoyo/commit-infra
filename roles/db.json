@@ -3,16 +3,10 @@
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "mysql": {
-      "service_name": "default",
-      "version": "5.5",
-      "remove_anonymous_users": true,
-      "remove_test_database": true
-    }
   },
   "override_attributes": {},
   "run_list": [
-    "recipe[mysql::server]",
-    "recipe[mysql::client]"
+    "recipe[commitm-mysql::server]",
+    "recipe[commitm-mysql::client]"
   ]
 }
