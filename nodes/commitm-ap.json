@@ -3,7 +3,7 @@
   "run_list": [
     "role[base]",
     "role[ap]",
-    "role[db]"    
+    "role[db]",
     "role[es]"
   ]
 }
