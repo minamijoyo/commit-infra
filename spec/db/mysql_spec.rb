@@ -8,7 +8,7 @@ describe "mysql spec" do
   end
 
   # service
-  describe service('mysqld') do
+  describe service('mysql-default') do
     it { should be_enabled }
     it { should be_running }
   end
