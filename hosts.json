@@ -21,6 +21,6 @@
     "user": "ec2-user",
     "port": 22,
     "keys":  "<%= ENV['TARGET_SSH_KEYPATH'] %>",
-    "roles":["base", "ap"]
+    "roles":["base", "ap", "es"]
   }
 ]
