@@ -2,6 +2,8 @@
   "environment": "production",
   "run_list": [
     "role[base]",
-    "role[ap]"
+    "role[ap]",
+    "role[db]",
+    "role[es]"
   ]
 }

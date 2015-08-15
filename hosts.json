@@ -8,12 +8,12 @@
     "roles":["base", "ap", "db", "es"]
   },
   {
-    "name": "commitm-ap01",
+    "name": "commitm-ap03",
     "host_name": "54.92.52.92",
     "user": "ec2-user",
     "port": 22,
     "keys":  "~/work/aws/aws-login.pem",
-    "roles":["base", "ap"]
+    "roles":["base", "ap", "db", "es"]
   },
   {
     "name": "commitm-ap",
