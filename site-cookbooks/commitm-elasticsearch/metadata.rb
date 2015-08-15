@@ -1,0 +1,8 @@
+name             'commitm-elasticsearch'
+maintainer       'minamijoyo'
+maintainer_email 'minamijoyo@gmail.com'
+license          'MIT'
+description      'Customize elasticsearch settings for commit-m'
+long_description 'Customize elasticsearch settings for commit-m'
+version          '0.1.0'
+depends          'elasticsearch', '~> 1.0.0'
