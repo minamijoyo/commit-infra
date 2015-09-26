@@ -9,3 +9,8 @@ cookbooks/
 
 # Ignore wercker CI temp file
 ec2.env
+
+#terraform
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
