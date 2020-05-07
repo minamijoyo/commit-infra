@@ -134,7 +134,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rack (1.6.0)
+    rack (2.2.2)
     rake (10.4.2)
     retryable (2.0.1)
     ridley (4.1.2)
